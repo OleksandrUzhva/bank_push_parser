@@ -36,7 +36,7 @@ class UkrsibParser(BaseBankParser):
         self.data.bank_account_details = self._extract_by_pattern(r"(?:kartku|Kartka)\s?([\d\*]+)", self.content)
         self.data.operation_amount = abs(self._parse_amount(self._extract_by_pattern(r"(?:sumu|Suma)\s?([\d\s\.,]+)", self.content)) or 0)
         self.data.operation_type = "in" if "Perekaz" in self.content else "reject"
-        self.data.operation_currency = "UAH" # Додано явно
+        self.data.operation_currency = "UAH" 
         self.data.counterparty_details = self._extract_by_pattern(r"(?:Perekaz|Blokuvannia):\s?(.*?)\s\d{2}", self.content)
         return self.data
 
